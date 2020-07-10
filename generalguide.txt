@@ -1,0 +1,40 @@
+Companies House Data here: http://download.companieshouse.gov.uk/en_output.html
+
+Find Recent File names and add where [COHO FILE] is in code
+
+#install unzip
+sudo apt-get install unzip
+
+
+#Install CloudSDK
+curl https://sdk.cloud.google.com | bash
+
+#restart shell
+exec -l $SHELL
+
+
+#install libwww-perl
+apt-get install libwww-perl
+
+
+#download zip into vm
+
+wget "[COHO FILE]" 
+
+#unzip
+unzip /mmchale813/home/[COHO FILE] -d ~/
+
+#delete zipfile
+rm [COHO FILE]
+
+#send to cloud bucket (set one up and note gs://[yourbucketname])
+
+#run gstuil
+gcloud init
+
+#copy file to bucket (set bucket in storage and note the gs://[yourbucketname] path
+
+gsutil cp [COHO FILE] gs://[yourbucketname]
+
+##########CSV is now in bucket ready to pull into Biq Query###############
+
